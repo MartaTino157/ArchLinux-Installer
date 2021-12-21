@@ -129,7 +129,7 @@ echo "root:$comp_pass" | arch-chroot /mnt chpasswd
 arch-chroot /mnt /bin/bash -c "grub-install /dev/sda"
 arch-chroot /mnt /bin/bash -c "grub-mkconfig -o /boot/grub/grub.cfg"
 
-arch-chroot /mnt /bin/bash -c "useradd -m $username -g root -p $(openssl passwd -crypt $pass) -s /bin/bash"
+arch-chroot /mnt /bin/bash -c "useradd -m $username -g root -p $(openssl passwd -1 $pass) -s /bin/bash"
 
 arch-chroot /mnt /bin/bash -c "pacman -Syu"
 arch-chroot /mnt /bin/bash -c "pacman -S xorg xorg-xinit mesa --noconfirm"
